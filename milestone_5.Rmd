@@ -20,17 +20,16 @@ library(tidyverse)
 ny_data <- read_csv("ny_listings.csv")
 london_listings <- read_csv("listings.csv")
 
-total_data <- full_join(ny_data, london_listings, by=c("id", "name", "host_id", "host_name", "neighbourhood", "latitude", "longitude", "room_type", "price", "minimum_nights", "number_of_reviews", "last_review", "reviews_per_month", "calculated_host_listings_count", "availability_365"))
+total_data <- full_join(ny_data, london_listings, by=c("id", "name", "host_id", "host_name", "neighbourhood", "latitude", "longitude", "room_type", "price", "minimum_nights", "number_of_reviews", "last_review", "reviews_per_month", "calculated_host_listings_count", "availability_365")) %>%
+    mutate(city = c(rep("New York", 48377), rep("London", 83850)))
 
 ```
 
 ### Draft About Page
 
-About 250 words of text is typical. Assume I don't know anything about your topic. Explain it to me. What is the data? What is the context? What do the variables mean? Where did you get the data from? 
+Airbnb is a San Francisco based company founded in 2008. The company operates through a website and app that allows users to arrange and offer lodging. Guests can filter to look for different types of lodging, selecting different types (whole apartment, room in apartment, whole house, etc), dates, prices, and locations. Airbnb allows hosts and guests to communicate before and during the stay, and after a stay guests can leave ratings about houses/hosts. The company started in San Francisco but is now worldwide with hosts in cities and towns on every continent using the app. The company is one of the biggest lodging platforms, with big implications on local hospitality industries.
 
-Airbnb is a San Francisico based company founded in 2008. The company operates through a website and app that allows users to arrange and offer lodging. Guests can 
+The data used for this project comes from Inside Airbnb (http://insideairbnb.com/about.html). Inside Airbnb is a set of tools and data created to help people explore how Airbnb is really being used around the world. The project is not associated with Airbnb and is a website that has compiled publicly available information about Airbnb listings in different cities around the world. 
 
-This data is ____. The data is available for free from the Airbnb 
-
-  
+This specific data contains lots of information. There is an id code for each listing, a name (created by the host), host id, host name, latitude, longitude, price per night, minimum nights for reservation, the number of reviews for the listing, the date of the latest review, the average number of reviews per month, the number of lists that host has, and the number of days of the year that the listing is available to rent. There are also neighborhood group and neighborhood which describe bigger neighborhood groupings and smaller ones. In cities in which there are not clear larger and smaller neighborhood groups the neighbourhood group column is empty.
 
